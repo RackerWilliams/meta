@@ -1,0 +1,120 @@
+digraph Checker { rankdir=LR; fontname="Helvetica"; labelloc=b;
+       
+                    node [fontname="Helvetica", shape=rect, style=filled,fillcolor="#EEEEEE"]
+               
+           {
+           rank=source
+           S0
+           }
+           {
+           S0->d59e207_billing_role
+           S0->d59e53_superAdmin
+           S0->S0_admin
+           S0->S0_billing_role
+           S0->S0_service_role
+           S0->S0_superAdmin
+           S0->_53305F5C3F5C3F5C3F
+           S0->S0_customer_role
+           S0->S0_another_role
+           S0_admin->d59e53_admin
+           S0_admin->d59e207_admin
+           S0_billing_role->d59e53_billing_role
+           S0_billing_role->d59e207_billing_role
+           S0_service_role->d59e53_service_role
+           S0_service_role->d59e207_service_role
+           S0_superAdmin->d59e53_superAdmin
+           S0_superAdmin->d59e207_admin
+           _53305F5C3F5C3F5C3F->d59e53_superAdmin
+           _53305F5C3F5C3F5C3F->_643539653230375F5C3F5C3F5C3F
+           S0_customer_role->d59e53_superAdmin
+           S0_customer_role->d59e207_customer_role
+           S0_another_role->d59e53_superAdmin
+           S0_another_role->d59e207_service_role
+           d59e53_admin->d59e54_admin
+           d59e54_admin->d59e160_admin
+           d59e54_admin->d59e169_admin
+           d59e54_admin->d59e180_admin
+           d59e54_admin->d59e199_admin
+           d59e160_admin->d59e169_admin
+           d59e160_admin->d59e180_admin
+           d59e160_admin->d59e199_admin
+           d59e180_admin->d59e187
+           d59e180_admin->d59e189
+           d59e207_admin->d59e54_admin
+           d59e53_billing_role->d59e54_billing_role
+           d59e54_billing_role->d59e88_billing_role
+           d59e54_billing_role->d59e160_billing_role
+           d59e54_billing_role->d59e169_admin
+           d59e88_billing_role->d59e180_admin
+           d59e88_billing_role->d59e199_admin
+           d59e160_billing_role->d59e169_admin
+           d59e207_billing_role->d59e208_billing_role
+           d59e208_billing_role->d59e160_billing_role
+           d59e208_billing_role->d59e169_admin
+           d59e53_service_role->d59e54_service_role
+           d59e54_service_role->d59e124_service_role
+           d59e54_service_role->d59e160_billing_role
+           d59e54_service_role->d59e169_admin
+           d59e124_service_role->d59e180_admin
+           d59e124_service_role->d59e199_admin
+           d59e207_service_role->d59e208_service_role
+           d59e208_service_role->d59e316_service_role
+           d59e208_service_role->d59e160_billing_role
+           d59e208_service_role->d59e169_admin
+           d59e316_service_role->d59e180_admin
+           d59e316_service_role->d59e199_admin
+           d59e53_superAdmin->d59e208_billing_role
+           _643539653230375F5C3F5C3F5C3F->_643539653230385F5C3F5C3F5C3F
+           _643539653230385F5C3F5C3F5C3F->_643539653234345F5C3F5C3F5C3F
+           _643539653230385F5C3F5C3F5C3F->d59e160_billing_role
+           _643539653230385F5C3F5C3F5C3F->d59e169_admin
+           _643539653234345F5C3F5C3F5C3F->d59e180_admin
+           _643539653234345F5C3F5C3F5C3F->d59e199_admin
+           d59e207_customer_role->d59e208_customer_role
+           d59e208_customer_role->d59e280_customer_role
+           d59e208_customer_role->d59e160_billing_role
+           d59e208_customer_role->d59e169_admin
+           d59e280_customer_role->d59e180_admin
+           d59e280_customer_role->d59e199_admin
+           }
+
+//Nodes
+
+       REAL_START[style=invis]
+S0[label="START\nS0", shape=none, fillcolor="white"]
+S0_admin[label="X-ROLES : admin\n[5]\nS0_admin"]
+S0_billing_role[label="X-ROLES : billing:role\n[5]\nS0_billing_role"]
+S0_service_role[label="X-ROLES : service:role\n[5]\nS0_service_role"]
+S0_superAdmin[label="X-ROLES : superAdmin\n[5]\nS0_superAdmin"]
+_53305F5C3F5C3F5C3F[label="X-ROLES : \\?\\?\\?\n[5]\n_53305F5C3F5C3F5C3F"]
+S0_customer_role[label="X-ROLES : customer:role\n[5]\nS0_customer_role"]
+S0_another_role[label="X-ROLES : another_role\n[5]\nS0_another_role"]
+d59e53_admin[label="myResource\nd59e53_admin", fillcolor="yellowgreen"]
+d59e54_admin[label="metadata\nd59e54_admin", fillcolor="yellowgreen"]
+d59e160_admin[label=".*\nd59e160_admin", fillcolor="yellowgreen"]
+d59e169_admin[label="GET\nd59e169_admin"]
+d59e180_admin[label="PUT\nd59e180_admin"]
+d59e187[label="(?i)(application/json)(;.*)?\nd59e187"]
+d59e189[label="(?i)(application/xml)(;.*)?\nd59e189"]
+d59e199_admin[label="DELETE\nd59e199_admin"]
+d59e207_admin[label="otherResource\nd59e207_admin", fillcolor="yellowgreen"]
+d59e53_billing_role[label="myResource\nd59e53_billing_role", fillcolor="yellowgreen"]
+d59e54_billing_role[label="metadata\nd59e54_billing_role", fillcolor="yellowgreen"]
+d59e88_billing_role[label="meta:standard_RAX_META_TYPE62696C6C696E673A726F6C65 \n(key_standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd59e88_billing_role", fillcolor="yellowgreen"]
+d59e160_billing_role[label=".*\nd59e160_billing_role", fillcolor="yellowgreen"]
+d59e207_billing_role[label="otherResource\nd59e207_billing_role", fillcolor="yellowgreen"]
+d59e208_billing_role[label="metadata\nd59e208_billing_role", fillcolor="yellowgreen"]
+d59e53_service_role[label="myResource\nd59e53_service_role", fillcolor="yellowgreen"]
+d59e54_service_role[label="metadata\nd59e54_service_role", fillcolor="yellowgreen"]
+d59e124_service_role[label="meta:standard_RAX_META_TYPE736572766963653A726F6C65 \n(key_standard_RAX_META_TYPE736572766963653A726F6C65)\nd59e124_service_role", fillcolor="yellowgreen"]
+d59e207_service_role[label="otherResource\nd59e207_service_role", fillcolor="yellowgreen"]
+d59e208_service_role[label="metadata\nd59e208_service_role", fillcolor="yellowgreen"]
+d59e316_service_role[label="meta:other_RAX_META_TYPE736572766963653A726F6C65 \n(key_other_RAX_META_TYPE736572766963653A726F6C65)\nd59e316_service_role", fillcolor="yellowgreen"]
+d59e53_superAdmin[label="myResource\nd59e53_superAdmin", fillcolor="yellowgreen"]
+_643539653230375F5C3F5C3F5C3F[label="otherResource\n_643539653230375F5C3F5C3F5C3F", fillcolor="yellowgreen"]
+_643539653230385F5C3F5C3F5C3F[label="metadata\n_643539653230385F5C3F5C3F5C3F", fillcolor="yellowgreen"]
+_643539653234345F5C3F5C3F5C3F[label="meta:other_RAX_META_TYPE3F3F3F \n(key_other_RAX_META_TYPE3F3F3F)\n_643539653234345F5C3F5C3F5C3F", fillcolor="yellowgreen"]
+d59e207_customer_role[label="otherResource\nd59e207_customer_role", fillcolor="yellowgreen"]
+d59e208_customer_role[label="metadata\nd59e208_customer_role", fillcolor="yellowgreen"]
+d59e280_customer_role[label="meta:other_RAX_META_TYPE637573746F6D65723A726F6C65 \n(key_other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd59e280_customer_role", fillcolor="yellowgreen"]
+}

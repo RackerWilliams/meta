@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://wadl.dev.java.net/2009/02"
+             xmlns:rax="http://docs.rackspace.com/api">
+   <wadl:grammars xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                  xmlns:meta="http://docs.rackspace.com/metadata/api">
+      <schema xmlns="http://www.w3.org/2001/XMLSchema"
+              elementFormDefault="qualified"
+              attributeFormDefault="unqualified"
+              targetNamespace="http://docs.rackspace.com/metadata/api">
+         <simpleType name="standard_RAX_META_TYPE62696C6C696E673A726F6C65">
+            <restriction base="xs:string">
+               <pattern value="billing:.*"/>
+            </restriction>
+         </simpleType>
+         <simpleType name="standard_RAX_META_TYPE736572766963653A726F6C65">
+            <restriction base="xs:string">
+               <pattern value="service:.*"/>
+            </restriction>
+         </simpleType>
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema"
+              elementFormDefault="qualified"
+              attributeFormDefault="unqualified"
+              targetNamespace="http://docs.rackspace.com/metadata/api">
+         <simpleType name="other_RAX_META_TYPE637573746F6D65723A726F6C65">
+            <restriction base="xs:string">
+               <pattern value="customer:role:.*"/>
+            </restriction>
+         </simpleType>
+         <simpleType name="other_RAX_META_TYPE736572766963653A726F6C65">
+            <restriction base="xs:string">
+               <pattern value="service:.*"/>
+            </restriction>
+         </simpleType>
+         <simpleType name="other_RAX_META_TYPE3F3F3F">
+            <restriction base="xs:string">
+               <pattern value="\|\|\|:.*"/>
+            </restriction>
+         </simpleType>
+      </schema>
+   </wadl:grammars>
+   
+    <resources base="https://resource.api.rackspace.com">
+        <resource id="mine" path="myResource">
+         <resource xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                   xmlns:meta="http://docs.rackspace.com/metadata/api"
+                   id="standard_RAX_META_TYPE"
+                   path="metadata">
+            <method name="GET" id="getResourceMetadata_standard_RAX_META_TYPE">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Show resource metadata for standard_RAX_META_TYPE"/>
+               <response status="200 203"/>
+            </method>
+            <method name="PUT"
+                    id="setResourceMetadata_standard_RAX_META_TYPE"
+                    rax:roles="admin">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Create or update resource metadata for standard_RAX_META_TYPE"/>
+               <request>
+                  <representation mediaType="application/json"/>
+                  <representation mediaType="application/xml" element="meta:metadata"/>
+               </request>
+               <response status="200">
+                  <representation mediaType="application/json"/>
+                  <representation mediaType="application/xml" element="meta:metadata"/>
+               </response>
+            </method>
+            <method name="DELETE"
+                    id="deleteResourceMetadata_standard_RAX_META_TYPE"
+                    rax:roles="admin">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Delete resource metadata for standard_RAX_META_TYPE"/>
+               <response status="204"/>
+            </method>
+            <resource id="key_standard_RAX_META_TYPE" path="{key_standard_RAX_META_TYPE}">
+               <param name="key_standard_RAX_META_TYPE" style="template" type="xs:string">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for standard_RAX_META_TYPE</para>
+                  </wadl:doc>
+               </param>
+               <method name="GET" id="getResourceMetadataItem_standard_RAX_META_TYPE">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Show resource metadata item details for standard_RAX_META_TYPE"/>
+                  <response status="200 203">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="PUT"
+                       id="setResourceMetadataItem_standard_RAX_META_TYPE"
+                       rax:roles="admin">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for standard_RAX_META_TYPE"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_standard_RAX_META_TYPE"
+                       rax:roles="admin">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for standard_RAX_META_TYPE"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_standard_RAX_META_TYPE62696C6C696E673A726F6C65"
+                      path="{key_standard_RAX_META_TYPE62696C6C696E673A726F6C65}">
+               <param name="key_standard_RAX_META_TYPE62696C6C696E673A726F6C65"
+                      style="template"
+                      type="meta:standard_RAX_META_TYPE62696C6C696E673A726F6C65">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_standard_RAX_META_TYPE62696C6C696E673A726F6C65"
+                       rax:roles="billing:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_standard_RAX_META_TYPE62696C6C696E673A726F6C65"
+                       rax:roles="billing:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_standard_RAX_META_TYPE736572766963653A726F6C65"
+                      path="{key_standard_RAX_META_TYPE736572766963653A726F6C65}">
+               <param name="key_standard_RAX_META_TYPE736572766963653A726F6C65"
+                      style="template"
+                      type="meta:standard_RAX_META_TYPE736572766963653A726F6C65">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for standard_RAX_META_TYPE736572766963653A726F6C65</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_standard_RAX_META_TYPE736572766963653A726F6C65"
+                       rax:roles="service:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_standard_RAX_META_TYPE736572766963653A726F6C65"
+                       rax:roles="service:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+         </resource>
+      </resource>
+        <resource id="other" path="otherResource">
+         <resource xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:wadl="http://wadl.dev.java.net/2009/02"
+                   xmlns:meta="http://docs.rackspace.com/metadata/api"
+                   id="other_RAX_META_TYPE"
+                   path="metadata">
+            <method name="GET" id="getResourceMetadata_other_RAX_META_TYPE">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Show resource metadata for other_RAX_META_TYPE"/>
+               <response status="200 203"/>
+            </method>
+            <method name="PUT"
+                    id="setResourceMetadata_other_RAX_META_TYPE"
+                    rax:roles="admin superAdmin">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Create or update resource metadata for other_RAX_META_TYPE"/>
+               <request>
+                  <representation mediaType="application/json"/>
+                  <representation mediaType="application/xml" element="meta:metadata"/>
+               </request>
+               <response status="200">
+                  <representation mediaType="application/json"/>
+                  <representation mediaType="application/xml" element="meta:metadata"/>
+               </response>
+            </method>
+            <method name="DELETE"
+                    id="deleteResourceMetadata_other_RAX_META_TYPE"
+                    rax:roles="admin superAdmin">
+               <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                         xml:lang="EN"
+                         title="Delete resource metadata for other_RAX_META_TYPE"/>
+               <response status="204"/>
+            </method>
+            <resource id="key_other_RAX_META_TYPE" path="{key_other_RAX_META_TYPE}">
+               <param name="key_other_RAX_META_TYPE" style="template" type="xs:string">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE</para>
+                  </wadl:doc>
+               </param>
+               <method name="GET" id="getResourceMetadataItem_other_RAX_META_TYPE">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Show resource metadata item details for other_RAX_META_TYPE"/>
+                  <response status="200 203">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE"
+                       rax:roles="admin superAdmin">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE"
+                       rax:roles="admin superAdmin">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_other_RAX_META_TYPE637573746F6D65723A726F6C65"
+                      path="{key_other_RAX_META_TYPE637573746F6D65723A726F6C65}">
+               <param name="key_other_RAX_META_TYPE637573746F6D65723A726F6C65"
+                      style="template"
+                      type="meta:other_RAX_META_TYPE637573746F6D65723A726F6C65">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A726F6C65"
+                       rax:roles="customer:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A726F6C65"
+                       rax:roles="customer:role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_other_RAX_META_TYPE736572766963653A726F6C65"
+                      path="{key_other_RAX_META_TYPE736572766963653A726F6C65}">
+               <param name="key_other_RAX_META_TYPE736572766963653A726F6C65"
+                      style="template"
+                      type="meta:other_RAX_META_TYPE736572766963653A726F6C65">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE736572766963653A726F6C65</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE736572766963653A726F6C65"
+                       rax:roles="service:role another_role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE736572766963653A726F6C65"
+                       rax:roles="service:role another_role">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_other_RAX_META_TYPE3F3F3F"
+                      path="{key_other_RAX_META_TYPE3F3F3F}">
+               <param name="key_other_RAX_META_TYPE3F3F3F"
+                      style="template"
+                      type="meta:other_RAX_META_TYPE3F3F3F">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE3F3F3F</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE3F3F3F"
+                       rax:roles="???">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE3F3F3F"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE3F3F3F"
+                       rax:roles="???">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE3F3F3F"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+         </resource>
+      </resource>
+    </resources>
+    
+    
+    
+</application>
