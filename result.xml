@@ -8,36 +8,35 @@
               elementFormDefault="qualified"
               attributeFormDefault="unqualified"
               targetNamespace="http://docs.rackspace.com/metadata/api">
-         <simpleType name="standard_RAX_META_TYPE62696C6C696E673A726F6C65">
-            <restriction base="xs:string">
-               <pattern value="billing:.*"/>
-            </restriction>
-         </simpleType>
-         <simpleType name="standard_RAX_META_TYPE736572766963653A726F6C65">
-            <restriction base="xs:string">
-               <pattern value="service:.*"/>
-            </restriction>
-         </simpleType>
-      </schema>
-      <schema xmlns="http://www.w3.org/2001/XMLSchema"
-              elementFormDefault="qualified"
-              attributeFormDefault="unqualified"
-              targetNamespace="http://docs.rackspace.com/metadata/api">
-         <simpleType name="other_RAX_META_TYPE637573746F6D65723A726F6C65">
-            <restriction base="xs:string">
-               <pattern value="customer:role:.*"/>
-            </restriction>
-         </simpleType>
-         <simpleType name="other_RAX_META_TYPE736572766963653A726F6C65">
-            <restriction base="xs:string">
-               <pattern value="service:.*"/>
-            </restriction>
-         </simpleType>
-         <simpleType name="other_RAX_META_TYPE3F3F3F">
-            <restriction base="xs:string">
-               <pattern value="\|\|\|:.*"/>
-            </restriction>
-         </simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="standard_RAX_META_TYPE62696C6C696E673A726F6C65">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="billing:.*"/>
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="standard_RAX_META_TYPE736572766963653A726F6C65">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="service:.*"/>
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="other_RAX_META_TYPE637573746F6D65723A726F6C65">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="customer:role:.*"/>
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="other_RAX_META_TYPE736572766963653A726F6C65">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="service:.*"/>
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02" name="other_RAX_META_TYPE3F3F3F">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="\|\|\|:.*"/>
+            </xs:restriction>
+         </xs:simpleType>
       </schema>
    </wadl:grammars>
    

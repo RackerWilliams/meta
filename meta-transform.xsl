@@ -77,7 +77,9 @@
             <xsl:apply-templates select="@*"/>
             <xsl:if test="not(wadl:grammars)">
                 <wadl:grammars>
-                    <xsl:apply-templates mode="pattern" select="rax:metadata"/>
+                    <xsl:call-template name="addMetadataSchema">
+                        <xsl:with-param name="metadata" select="rax:metadata"/>
+                    </xsl:call-template>
                 </wadl:grammars>
             </xsl:if>
             <xsl:apply-templates select="node()"/>
@@ -86,7 +88,9 @@
     <xsl:template match="wadl:grammars">
         <xsl:copy>
             <xsl:apply-templates select="@*"/>
-            <xsl:apply-templates mode="pattern" select="../rax:metadata"/>
+            <xsl:call-template name="addMetadataSchema">
+                <xsl:with-param name="metadata" select="../rax:metadata"/>
+            </xsl:call-template>
             <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
@@ -102,22 +106,28 @@
     <xsl:template match="rax:metadata"/>
     <xsl:template match="rax:metadata" mode="pattern">
         <xsl:variable name="metaRoles" as="node()*">
-            <xsl:apply-templates select="rax:metaRole[not(@pattern) or @pattern !='*']" mode="metacopy"/>
+            <xsl:apply-templates select="rax:metaRole[not(@pattern) or @pattern !='*']"
+                mode="metacopy"/>
         </xsl:variable>
         <xsl:variable name="id" select="@id" as="xs:string"/>
+
+        <xsl:for-each-group select="$metaRoles" group-by="@pattern">
+            <xsl:variable name="name" as="xs:string" select="current-group()[1]/@name"/>
+            <xs:simpleType name="{rax:metaResourceXSDType($id,rax:encodeRole($name))}">
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="{rax:toRegExEscaped(current-group()[1]/@pattern)}.*"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xsl:for-each-group>
+    </xsl:template>
+    <xsl:template name="addMetadataSchema">
+        <xsl:param name="metadata" as="node()*"/>
         <schema
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             xmlns="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://docs.rackspace.com/metadata/api">
-            <xsl:for-each-group select="$metaRoles" group-by="@pattern">
-                <xsl:variable name="name" as="xs:string" select="current-group()[1]/@name"/>
-                <simpleType name="{rax:metaResourceXSDType($id,rax:encodeRole($name))}">
-                    <restriction base="xs:string">
-                        <pattern value="{rax:toRegExEscaped(current-group()[1]/@pattern)}.*"/>
-                    </restriction>
-                </simpleType>
-            </xsl:for-each-group>
+            <xsl:apply-templates mode="pattern" select="$metadata"/>
         </schema>
     </xsl:template>
     <!-- Inserts Metadata API with specifics for a particular Metadata group -->
