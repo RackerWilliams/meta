@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+   meta-transform.xsl
+
+   This stylesheet rax:metadata into metadata resources with
+   appropriate rax:roles attributes.
+
+   Copyright 2015 Rackspace US, Inc.
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
@@ -87,27 +107,25 @@
     </xsl:template>
     <xsl:template match="wadl:grammars">
         <xsl:copy>
-            <xsl:apply-templates select="@*"/>
+            <xsl:apply-templates select="@* | node()"/>
             <xsl:call-template name="addMetadataSchema">
                 <xsl:with-param name="metadata" select="../rax:metadata"/>
             </xsl:call-template>
-            <xsl:apply-templates/>
         </xsl:copy>
     </xsl:template>
     <xsl:template match="wadl:resource[@rax:useMetadata]">
         <xsl:copy>
             <xsl:apply-templates select="@*[not(name() = 'rax:useMetadata')]"/>
+            <xsl:apply-templates select="node()"/>
             <xsl:call-template name="addMetadataAPI">
                 <xsl:with-param name="useMetadata" select="@rax:useMetadata"/>
             </xsl:call-template>
-            <xsl:apply-templates select="node()"/>
         </xsl:copy>
     </xsl:template>
     <xsl:template match="rax:metadata"/>
     <xsl:template match="rax:metadata" mode="pattern">
         <xsl:variable name="metaRoles" as="node()*">
-            <xsl:apply-templates select="rax:metaRole[not(@pattern) or @pattern !='*']"
-                mode="metacopy"/>
+            <xsl:apply-templates select="rax:metaRole[not(@pattern) or @pattern !='*']" mode="metaCopy"/>
         </xsl:variable>
         <xsl:variable name="id" select="@id" as="xs:string"/>
 
@@ -137,7 +155,7 @@
         <xsl:variable name="metadata" as="node()" select="/wadl:application/rax:metadata[@id=$useMetadata]"/>
         <xsl:variable name="adminTypes" as="node()*" select="$metadata/rax:metaRole[@pattern='*']"/>
         <xsl:variable name="nonAdmins" as="node()*">
-            <xsl:apply-templates select="$metadata/rax:metaRole[not(@pattern) or @pattern !='*']" mode="metacopy"/>
+            <xsl:apply-templates select="$metadata/rax:metaRole[not(@pattern) or @pattern !='*']" mode="metaCopy"/>
         </xsl:variable>
         <xsl:variable name="adminRaxRoles" as="xs:string"><xsl:value-of select="$adminTypes/@name" separator=" "/></xsl:variable>
         <resource id="{$uniqueName}" path="metadata">
@@ -225,7 +243,7 @@
             </method>
         </resource>
     </xsl:template>
-    <xsl:template match="rax:metaRole" mode="metacopy">
+    <xsl:template match="rax:metaRole" mode="metaCopy">
         <xsl:copy>
             <xsl:if test="not(@pattern)">
                 <xsl:attribute name="pattern" select="concat(@name,':')"/>
