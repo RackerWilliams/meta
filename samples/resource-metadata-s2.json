@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "service:type2": "A name",
+        "service2:type2": "A name",
         "service:type": "A type"
     }
 }

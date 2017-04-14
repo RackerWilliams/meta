@@ -181,7 +181,12 @@
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
                     title="Create or update resource metadata for {$uniqueName}"/>
                 <request>
-                    <representation mediaType="application/json"/>
+                    <representation mediaType="application/json">
+                        <xsl:call-template name="rax:metaAsserts">
+                            <xsl:with-param name="nonAdmins" select="$nonAdmins"/>
+                            <xsl:with-param name="keySelector" select="'map:keys($_?metadata)'"/>
+                        </xsl:call-template>
+                    </representation>
                     <representation mediaType="application/xml" element="meta:metadata">
                         <xsl:call-template name="rax:metaAsserts">
                             <xsl:with-param name="nonAdmins" select="$nonAdmins"/>
@@ -264,7 +269,7 @@
     <xsl:template name="rax:metaAsserts">
         <xsl:param name="nonAdmins" as="node()*"/>
         <xsl:param name="keySelector" as="xs:string"/>
-        <rax:assert message="The message must contain metadata items" code="400" test="not(empty(/meta:metadata/meta:meta/@key))"/>
+        <rax:assert message="The message must contain metadata items" code="400" test="not(empty({$keySelector}))"/>
         <rax:assert message="You are not allowed to set metadata items of this type" code="403">
             <xsl:variable name="test" as="xs:string*">
                 let $roleToPattern := map {
