@@ -183,28 +183,10 @@
                 <request>
                     <representation mediaType="application/json"/>
                     <representation mediaType="application/xml" element="meta:metadata">
-                        <rax:assert message="The message must contain metadata items" code="400" test="not(empty(/meta:metadata/meta:meta/@key))"/>
-                        <rax:assert message="You are not allowed to set metadata items of this type" code="403">
-                            <xsl:variable name="q">'</xsl:variable>
-                            <xsl:variable name="test" as="xs:string*">
-                                let $roleToPattern := map {
-                                   <xsl:for-each select="$nonAdmins">
-                                       <xsl:value-of select="concat($q,@name,$q)"/> : <xsl:value-of select="concat($q,@pattern,$q)"/>
-                                       <xsl:if test="position() != last()">,</xsl:if>
-                                   </xsl:for-each>
-                                },
-                                $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
-                                $metaItems  := for $k in /meta:metadata/meta:meta/@key return string($k),
-                                $matchItems := distinct-values(for $meta in $metaItems return
-                                                                for $pattern in $allowedPatterns return
-                                                                 if (starts-with($meta, $pattern)) then $meta else ())
-                                return count($matchItems) = count($metaItems)
-                            </xsl:variable>
-                            <xsl:attribute name="test" select="normalize-space(string-join($test,''))"/>
-                            <xsl:comment>
-                                <xsl:copy-of select="$test"/>
-                            </xsl:comment>
-                        </rax:assert>
+                        <xsl:call-template name="rax:metaAsserts">
+                            <xsl:with-param name="nonAdmins" select="$nonAdmins"/>
+                            <xsl:with-param name="keySelector" select="'/meta:metadata/meta:meta/@key'"/>
+                        </xsl:call-template>
                     </representation>
                 </request>
                 <response status="200">
@@ -279,6 +261,31 @@
             </method>
         </resource>
     </xsl:template>
+    <xsl:template name="rax:metaAsserts">
+        <xsl:param name="nonAdmins" as="node()*"/>
+        <xsl:param name="keySelector" as="xs:string"/>
+        <rax:assert message="The message must contain metadata items" code="400" test="not(empty(/meta:metadata/meta:meta/@key))"/>
+        <rax:assert message="You are not allowed to set metadata items of this type" code="403">
+            <xsl:variable name="test" as="xs:string*">
+                let $roleToPattern := map {
+                <xsl:for-each select="$nonAdmins">
+                    <xsl:value-of select="rax:quote(@name)"/> : <xsl:value-of select="rax:quote(@pattern)"/>
+                    <xsl:if test="position() != last()">,</xsl:if>
+                </xsl:for-each>
+                },
+                $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
+                $metaItems  := for $k in <xsl:value-of select="$keySelector"/> return string($k),
+                $matchItems := distinct-values(for $meta in $metaItems return
+                for $pattern in $allowedPatterns return
+                if (starts-with($meta, $pattern)) then $meta else ())
+                return count($matchItems) = count($metaItems)
+            </xsl:variable>
+            <xsl:attribute name="test" select="normalize-space(string-join($test,''))"/>
+            <xsl:comment>
+                                <xsl:copy-of select="$test"/>
+                            </xsl:comment>
+        </rax:assert>
+    </xsl:template>
     <xsl:template match="rax:metaRole" mode="metaCopy">
         <xsl:copy>
             <xsl:if test="not(@pattern)">
@@ -299,6 +306,12 @@
     <xsl:function name="rax:toRegExEscaped" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
         <xsl:value-of select="replace($in,'\.|\\|\(|\)|\{|\}|\[|\]|\?|\+|\-|\^|\$|#|\*|\|','\\$0')"/>
+    </xsl:function>
+    <xsl:function name="rax:quote" as="xs:string">
+        <xsl:param name="in" as="xs:string"/>
+        <xsl:variable name="q" as="xs:string">'</xsl:variable>
+        <xsl:variable name="noquotes" as="xs:string" select='replace($in,"&apos;","&amp;pos;")'/>
+        <xsl:value-of select="concat($q,$noquotes,$q)"/>
     </xsl:function>
     <xsl:function name="rax:encodeRole" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
