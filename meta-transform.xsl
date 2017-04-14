@@ -24,6 +24,7 @@
     xmlns:wadl="http://wadl.dev.java.net/2009/02"
     xmlns:rax="http://docs.rackspace.com/api"
     xmlns:meta="http://docs.rackspace.com/metadata/api"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
     xmlns="http://wadl.dev.java.net/2009/02"
     exclude-result-prefixes="xsl"
     version="2.0">
@@ -170,6 +171,41 @@
                 <request>
                     <representation mediaType="application/json"/>
                     <representation mediaType="application/xml" element="meta:metadata"/>
+                </request>
+                <response status="200">
+                    <representation mediaType="application/json"/>
+                    <representation mediaType="application/xml" element="meta:metadata"/>
+                </response>
+            </method>
+            <method name="PUT" id="setResourceMetadata_{$uniqueName}_NA">
+                <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
+                    title="Create or update resource metadata for {$uniqueName}"/>
+                <request>
+                    <representation mediaType="application/json"/>
+                    <representation mediaType="application/xml" element="meta:metadata">
+                        <rax:assert message="The message must contain metadata items" code="400" test="not(empty(/meta:metadata/meta:meta/@key))"/>
+                        <rax:assert message="You are not allowed to set metadata items of this type" code="403">
+                            <xsl:variable name="q">'</xsl:variable>
+                            <xsl:variable name="test" as="xs:string*">
+                                let $roleToPattern := map {
+                                   <xsl:for-each select="$nonAdmins">
+                                       <xsl:value-of select="concat($q,@name,$q)"/> : <xsl:value-of select="concat($q,@pattern,$q)"/>
+                                       <xsl:if test="position() != last()">,</xsl:if>
+                                   </xsl:for-each>
+                                },
+                                $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
+                                $metaItems  := for $k in /meta:metadata/meta:meta/@key return string($k),
+                                $matchItems := distinct-values(for $meta in $metaItems return
+                                                                for $pattern in $allowedPatterns return
+                                                                 if (starts-with($meta, $pattern)) then $meta else ())
+                                return count($matchItems) = count($metaItems)
+                            </xsl:variable>
+                            <xsl:attribute name="test" select="normalize-space(string-join($test,''))"/>
+                            <xsl:comment>
+                                <xsl:copy-of select="$test"/>
+                            </xsl:comment>
+                        </rax:assert>
+                    </representation>
                 </request>
                 <response status="200">
                     <representation mediaType="application/json"/>

@@ -7,114 +7,194 @@ digraph Checker { rankdir=LR; fontname="Helvetica"; labelloc=b;
            S0
            }
            {
-           S0->d59e207_billing_role
-           S0->d59e53_superAdmin
-           S0->S0_admin
-           S0->S0_billing_role
-           S0->S0_service_role
-           S0->S0_superAdmin
-           S0->_53305F5C3F5C3F5C3F
-           S0->S0_customer_role
-           S0->S0_another_role
-           S0_admin->d59e53_admin
-           S0_admin->d59e207_admin
-           S0_billing_role->d59e53_billing_role
-           S0_billing_role->d59e207_billing_role
-           S0_service_role->d59e53_service_role
-           S0_service_role->d59e207_service_role
-           S0_superAdmin->d59e53_superAdmin
-           S0_superAdmin->d59e207_admin
-           _53305F5C3F5C3F5C3F->d59e53_superAdmin
-           _53305F5C3F5C3F5C3F->_643539653230375F5C3F5C3F5C3F
-           S0_customer_role->d59e53_superAdmin
-           S0_customer_role->d59e207_customer_role
-           S0_another_role->d59e53_superAdmin
-           S0_another_role->d59e207_service_role
-           d59e53_admin->d59e54_admin
-           d59e54_admin->d59e160_admin
-           d59e54_admin->d59e169_admin
-           d59e54_admin->d59e180_admin
-           d59e54_admin->d59e199_admin
-           d59e160_admin->d59e169_admin
-           d59e160_admin->d59e180_admin
-           d59e160_admin->d59e199_admin
-           d59e180_admin->d59e187
-           d59e180_admin->d59e189
-           d59e207_admin->d59e54_admin
-           d59e53_billing_role->d59e54_billing_role
-           d59e54_billing_role->d59e88_billing_role
-           d59e54_billing_role->d59e160_billing_role
-           d59e54_billing_role->d59e169_admin
-           d59e88_billing_role->d59e180_admin
-           d59e88_billing_role->d59e199_admin
-           d59e160_billing_role->d59e169_admin
-           d59e207_billing_role->d59e208_billing_role
-           d59e208_billing_role->d59e160_billing_role
-           d59e208_billing_role->d59e169_admin
-           d59e53_service_role->d59e54_service_role
-           d59e54_service_role->d59e124_service_role
-           d59e54_service_role->d59e160_billing_role
-           d59e54_service_role->d59e169_admin
-           d59e124_service_role->d59e180_admin
-           d59e124_service_role->d59e199_admin
-           d59e207_service_role->d59e208_service_role
-           d59e208_service_role->d59e316_service_role
-           d59e208_service_role->d59e160_billing_role
-           d59e208_service_role->d59e169_admin
-           d59e316_service_role->d59e180_admin
-           d59e316_service_role->d59e199_admin
-           d59e53_superAdmin->d59e208_billing_role
-           _643539653230375F5C3F5C3F5C3F->_643539653230385F5C3F5C3F5C3F
-           _643539653230385F5C3F5C3F5C3F->_643539653234345F5C3F5C3F5C3F
-           _643539653230385F5C3F5C3F5C3F->d59e160_billing_role
-           _643539653230385F5C3F5C3F5C3F->d59e169_admin
-           _643539653234345F5C3F5C3F5C3F->d59e180_admin
-           _643539653234345F5C3F5C3F5C3F->d59e199_admin
-           d59e207_customer_role->d59e208_customer_role
-           d59e208_customer_role->d59e280_customer_role
-           d59e208_customer_role->d59e160_billing_role
-           d59e208_customer_role->d59e169_admin
-           d59e280_customer_role->d59e180_admin
-           d59e280_customer_role->d59e199_admin
+           S0->d43e50
+           S0->d43e217
+           d43e119->d43e121
+           d43e119->d43e123
+           d43e153->d43e155
+           d43e153->d43e157
+           d43e197->d43e199
+           d43e197->d43e201
+           d43e62->d43e64
+           d43e62->d43e66
+           d43e84W->d43e86
+           d43e86->d43e88
+           d43e288->d43e290
+           d43e288->d43e292
+           d43e322->d43e324
+           d43e322->d43e326
+           d43e356->d43e359
+           d43e356->d43e361
+           d43e357->d43e359
+           d43e357->d43e361
+           d43e402->d43e405
+           d43e402->d43e407
+           d43e403->d43e405
+           d43e403->d43e407
+           d43e229->d43e232
+           d43e229->d43e234
+           d43e230->d43e232
+           d43e230->d43e234
+           d43e252W->d43e254
+           d43e254->d43e256
+           d43e50->d43e51
+           d43e51->d43e105
+           d43e51->d43e139
+           d43e51->d43e173
+           d43e51->d43e52
+           d43e51->PUT_d43e51
+           d43e51->d43e99
+           d43e57->d43e62
+           d43e76->d43e82
+           d43e76->d43e84
+           d43e84->d43e84W
+           d43e99->d43e102
+           d43e105->d43e114
+           d43e105->d43e133
+           d43e114->d43e119
+           d43e133->d43e136
+           d43e139->d43e148
+           d43e139->d43e167
+           d43e148->d43e153
+           d43e167->d43e170
+           d43e173->d43e182
+           d43e173->d43e192
+           d43e173->d43e211
+           d43e192->d43e197
+           d43e211->d43e214
+           PUT_d43e51->d43e57
+           PUT_d43e51->d43e76
+           d43e217->d43e218
+           d43e218->d43e274
+           d43e218->d43e308
+           d43e218->d43e342
+           d43e218->d43e378
+           d43e218->d43e219
+           d43e218->PUT_d43e218
+           d43e218->d43e267
+           d43e224->d43e229
+           d43e224->d43e230
+           d43e244->d43e250
+           d43e244->d43e252
+           d43e252->d43e252W
+           d43e267->d43e270
+           d43e267->d43e271
+           d43e274->d43e283
+           d43e274->d43e302
+           d43e283->d43e288
+           d43e302->d43e305
+           d43e308->d43e317
+           d43e308->d43e336
+           d43e317->d43e322
+           d43e336->d43e339
+           d43e342->d43e351
+           d43e342->d43e371
+           d43e351->d43e356
+           d43e351->d43e357
+           d43e371->d43e374
+           d43e371->d43e375
+           d43e378->d43e387
+           d43e378->d43e397
+           d43e378->d43e417
+           d43e397->d43e402
+           d43e397->d43e403
+           d43e417->d43e420
+           d43e417->d43e421
+           PUT_d43e218->d43e224
+           PUT_d43e218->d43e244
            }
 
 //Nodes
 
        REAL_START[style=invis]
 S0[label="START\nS0", shape=none, fillcolor="white"]
-S0_admin[label="X-ROLES : admin\n[5]\nS0_admin"]
-S0_billing_role[label="X-ROLES : billing:role\n[5]\nS0_billing_role"]
-S0_service_role[label="X-ROLES : service:role\n[5]\nS0_service_role"]
-S0_superAdmin[label="X-ROLES : superAdmin\n[5]\nS0_superAdmin"]
-_53305F5C3F5C3F5C3F[label="X-ROLES : \\?\\?\\?\n[5]\n_53305F5C3F5C3F5C3F"]
-S0_customer_role[label="X-ROLES : customer:role\n[5]\nS0_customer_role"]
-S0_another_role[label="X-ROLES : another_role\n[5]\nS0_another_role"]
-d59e53_admin[label="myResource\nd59e53_admin", fillcolor="yellowgreen"]
-d59e54_admin[label="metadata\nd59e54_admin", fillcolor="yellowgreen"]
-d59e160_admin[label=".*\nd59e160_admin", fillcolor="yellowgreen"]
-d59e169_admin[label="GET\nd59e169_admin"]
-d59e180_admin[label="PUT\nd59e180_admin"]
-d59e187[label="(?i)(application/json)(;.*)?\nd59e187"]
-d59e189[label="(?i)(application/xml)(;.*)?\nd59e189"]
-d59e199_admin[label="DELETE\nd59e199_admin"]
-d59e207_admin[label="otherResource\nd59e207_admin", fillcolor="yellowgreen"]
-d59e53_billing_role[label="myResource\nd59e53_billing_role", fillcolor="yellowgreen"]
-d59e54_billing_role[label="metadata\nd59e54_billing_role", fillcolor="yellowgreen"]
-d59e88_billing_role[label="meta:standard_RAX_META_TYPE62696C6C696E673A726F6C65 \n(key_standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd59e88_billing_role", fillcolor="yellowgreen"]
-d59e160_billing_role[label=".*\nd59e160_billing_role", fillcolor="yellowgreen"]
-d59e207_billing_role[label="otherResource\nd59e207_billing_role", fillcolor="yellowgreen"]
-d59e208_billing_role[label="metadata\nd59e208_billing_role", fillcolor="yellowgreen"]
-d59e53_service_role[label="myResource\nd59e53_service_role", fillcolor="yellowgreen"]
-d59e54_service_role[label="metadata\nd59e54_service_role", fillcolor="yellowgreen"]
-d59e124_service_role[label="meta:standard_RAX_META_TYPE736572766963653A726F6C65 \n(key_standard_RAX_META_TYPE736572766963653A726F6C65)\nd59e124_service_role", fillcolor="yellowgreen"]
-d59e207_service_role[label="otherResource\nd59e207_service_role", fillcolor="yellowgreen"]
-d59e208_service_role[label="metadata\nd59e208_service_role", fillcolor="yellowgreen"]
-d59e316_service_role[label="meta:other_RAX_META_TYPE736572766963653A726F6C65 \n(key_other_RAX_META_TYPE736572766963653A726F6C65)\nd59e316_service_role", fillcolor="yellowgreen"]
-d59e53_superAdmin[label="myResource\nd59e53_superAdmin", fillcolor="yellowgreen"]
-_643539653230375F5C3F5C3F5C3F[label="otherResource\n_643539653230375F5C3F5C3F5C3F", fillcolor="yellowgreen"]
-_643539653230385F5C3F5C3F5C3F[label="metadata\n_643539653230385F5C3F5C3F5C3F", fillcolor="yellowgreen"]
-_643539653234345F5C3F5C3F5C3F[label="meta:other_RAX_META_TYPE3F3F3F \n(key_other_RAX_META_TYPE3F3F3F)\n_643539653234345F5C3F5C3F5C3F", fillcolor="yellowgreen"]
-d59e207_customer_role[label="otherResource\nd59e207_customer_role", fillcolor="yellowgreen"]
-d59e208_customer_role[label="metadata\nd59e208_customer_role", fillcolor="yellowgreen"]
-d59e280_customer_role[label="meta:other_RAX_META_TYPE637573746F6D65723A726F6C65 \n(key_other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd59e280_customer_role", fillcolor="yellowgreen"]
+d43e119[label="X-ROLES : billing:role\n[41005]\nd43e119"]
+d43e136[label="X-ROLES : billing:role\n[41005]\nd43e136"]
+d43e153[label="X-ROLES : service:role\n[41005]\nd43e153"]
+d43e170[label="X-ROLES : service:role\n[41005]\nd43e170"]
+d43e197[label="X-ROLES : admin\n[41005]\nd43e197"]
+d43e214[label="X-ROLES : admin\n[41005]\nd43e214"]
+d43e62[label="X-ROLES : admin\n[41005]\nd43e62"]
+d43e84W[label="WELL_XML\n[50006]\nd43e84W"]
+d43e86[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd43e86"]
+d43e88[label="let $roleToPattern := map { 'billing:role' : 'billing:','service:role' : 'service:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd43e88"]
+d43e102[label="X-ROLES : admin\n[41004]\nd43e102"]
+d43e288[label="X-ROLES : \\?\\?\\?\n[41005]\nd43e288"]
+d43e305[label="X-ROLES : \\?\\?\\?\n[41005]\nd43e305"]
+d43e322[label="X-ROLES : customer:role\n[41005]\nd43e322"]
+d43e339[label="X-ROLES : customer:role\n[41005]\nd43e339"]
+d43e356[label="X-ROLES : service:role\n[41005]\nd43e356"]
+d43e357[label="X-ROLES : another_role\n[41005]\nd43e357"]
+d43e374[label="X-ROLES : service:role\n[41005]\nd43e374"]
+d43e375[label="X-ROLES : another_role\n[41005]\nd43e375"]
+d43e402[label="X-ROLES : admin\n[41005]\nd43e402"]
+d43e403[label="X-ROLES : superAdmin\n[41005]\nd43e403"]
+d43e420[label="X-ROLES : admin\n[41005]\nd43e420"]
+d43e421[label="X-ROLES : superAdmin\n[41005]\nd43e421"]
+d43e229[label="X-ROLES : admin\n[41005]\nd43e229"]
+d43e230[label="X-ROLES : superAdmin\n[41005]\nd43e230"]
+d43e252W[label="WELL_XML\n[50006]\nd43e252W"]
+d43e254[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd43e254"]
+d43e256[label="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd43e256"]
+d43e270[label="X-ROLES : admin\n[41004]\nd43e270"]
+d43e271[label="X-ROLES : superAdmin\n[41004]\nd43e271"]
+d43e50[label="myResource\nd43e50", fillcolor="yellowgreen"]
+d43e51[label="metadata\nd43e51", fillcolor="yellowgreen"]
+d43e52[label="GET \n(Show resource metadata for standard_RAX_META_TYPE)\nd43e52"]
+d43e57[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd43e57"]
+d43e64[label="(?i)(application/json)(;.*)?\nd43e64"]
+d43e66[label="(?i)(application/xml)(;.*)?\nd43e66"]
+d43e76[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd43e76"]
+d43e82[label="(?i)(application/json)(;.*)?\nd43e82"]
+d43e84[label="(?i)(application/xml)(;.*)?\nd43e84"]
+d43e99[label="DELETE \n(Delete resource metadata for standard_RAX_META_TYPE)\nd43e99"]
+d43e105[label="meta:standard_RAX_META_TYPE62696C6C696E673A726F6C65 \n(key_standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e105", fillcolor="yellowgreen"]
+d43e114[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e114"]
+d43e121[label="(?i)(application/json)(;.*)?\nd43e121"]
+d43e123[label="(?i)(application/xml)(;.*)?\nd43e123"]
+d43e133[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e133"]
+d43e139[label="meta:standard_RAX_META_TYPE736572766963653A726F6C65 \n(key_standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e139", fillcolor="yellowgreen"]
+d43e148[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e148"]
+d43e155[label="(?i)(application/json)(;.*)?\nd43e155"]
+d43e157[label="(?i)(application/xml)(;.*)?\nd43e157"]
+d43e167[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e167"]
+d43e173[label="(?s).* \n(key_standard_RAX_META_TYPE)\nd43e173", fillcolor="yellowgreen"]
+d43e182[label="GET \n(Show resource metadata item details for standard_RAX_META_TYPE)\nd43e182"]
+d43e192[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE)\nd43e192"]
+d43e199[label="(?i)(application/json)(;.*)?\nd43e199"]
+d43e201[label="(?i)(application/xml)(;.*)?\nd43e201"]
+d43e211[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE)\nd43e211"]
+PUT_d43e51[label="PUT \n(ε)\nPUT_d43e51"]
+d43e217[label="otherResource\nd43e217", fillcolor="yellowgreen"]
+d43e218[label="metadata\nd43e218", fillcolor="yellowgreen"]
+d43e219[label="GET \n(Show resource metadata for other_RAX_META_TYPE)\nd43e219"]
+d43e224[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd43e224"]
+d43e232[label="(?i)(application/json)(;.*)?\nd43e232"]
+d43e234[label="(?i)(application/xml)(;.*)?\nd43e234"]
+d43e244[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd43e244"]
+d43e250[label="(?i)(application/json)(;.*)?\nd43e250"]
+d43e252[label="(?i)(application/xml)(;.*)?\nd43e252"]
+d43e267[label="DELETE \n(Delete resource metadata for other_RAX_META_TYPE)\nd43e267"]
+d43e274[label="meta:other_RAX_META_TYPE3F3F3F \n(key_other_RAX_META_TYPE3F3F3F)\nd43e274", fillcolor="yellowgreen"]
+d43e283[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE3F3F3F)\nd43e283"]
+d43e290[label="(?i)(application/json)(;.*)?\nd43e290"]
+d43e292[label="(?i)(application/xml)(;.*)?\nd43e292"]
+d43e302[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE3F3F3F)\nd43e302"]
+d43e308[label="meta:other_RAX_META_TYPE637573746F6D65723A726F6C65 \n(key_other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e308", fillcolor="yellowgreen"]
+d43e317[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e317"]
+d43e324[label="(?i)(application/json)(;.*)?\nd43e324"]
+d43e326[label="(?i)(application/xml)(;.*)?\nd43e326"]
+d43e336[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e336"]
+d43e342[label="meta:other_RAX_META_TYPE736572766963653A726F6C65 \n(key_other_RAX_META_TYPE736572766963653A726F6C65)\nd43e342", fillcolor="yellowgreen"]
+d43e351[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65)\nd43e351"]
+d43e359[label="(?i)(application/json)(;.*)?\nd43e359"]
+d43e361[label="(?i)(application/xml)(;.*)?\nd43e361"]
+d43e371[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65)\nd43e371"]
+d43e378[label="(?s).* \n(key_other_RAX_META_TYPE)\nd43e378", fillcolor="yellowgreen"]
+d43e387[label="GET \n(Show resource metadata item details for other_RAX_META_TYPE)\nd43e387"]
+d43e397[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE)\nd43e397"]
+d43e405[label="(?i)(application/json)(;.*)?\nd43e405"]
+d43e407[label="(?i)(application/xml)(;.*)?\nd43e407"]
+d43e417[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE)\nd43e417"]
+PUT_d43e218[label="PUT \n(ε)\nPUT_d43e218"]
 }

@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<metadata xmlns="http://docs.rackspace.com/metadata/api">
+    <meta key="service:type2">A name</meta>
+    <meta key="service:type">A type</meta>
+</metadata>
