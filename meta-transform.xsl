@@ -315,7 +315,7 @@
     <xsl:function name="rax:quote" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
         <xsl:variable name="q" as="xs:string">'</xsl:variable>
-        <xsl:variable name="noquotes" as="xs:string" select='replace($in,"&apos;","&amp;pos;")'/>
+        <xsl:variable name="noquotes" as="xs:string" select='replace($in,$q,concat($q,$q))'/>
         <xsl:value-of select="concat($q,$noquotes,$q)"/>
     </xsl:function>
     <xsl:function name="rax:encodeRole" as="xs:string">

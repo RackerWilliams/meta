@@ -38,6 +38,18 @@
                <xs:pattern value="\|\|\|:.*"/>
             </xs:restriction>
          </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="other_RAX_META_TYPE637573746F6D65723A71756F7465">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="ap'o's.*"/>
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:simpleType xmlns="http://wadl.dev.java.net/2009/02"
+                        name="other_RAX_META_TYPE637573746F6D65723A71756F746532">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="quo&#34;t&#34;e.*"/>
+            </xs:restriction>
+         </xs:simpleType>
       </schema>
    </wadl:grammars>
    
@@ -271,9 +283,9 @@
                                  test="not(empty(map:keys($_?metadata)))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:','customer:quote' : 'ap''o''s','customer:quote2' : 'quo&#34;t&#34;e' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' 
+                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' , 'customer:quote'  :  'ap''o''s' , 'customer:quote2'  :  'quo"t"e' 
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  map:keys($_?metadata)  return string($k),
@@ -289,9 +301,9 @@
                                  test="not(empty(/meta:metadata/meta:meta/@key))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:','customer:quote' : 'ap''o''s','customer:quote2' : 'quo&#34;t&#34;e' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' 
+                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' , 'customer:quote'  :  'ap''o''s' , 'customer:quote2'  :  'quo"t"e' 
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  /meta:metadata/meta:meta/@key  return string($k),
@@ -450,6 +462,72 @@
                   <wadl:doc xmlns="http://docbook.org/ns/docbook"
                             xml:lang="EN"
                             title="Delete resource metadata item for other_RAX_META_TYPE3F3F3F"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_other_RAX_META_TYPE637573746F6D65723A71756F7465"
+                      path="{key_other_RAX_META_TYPE637573746F6D65723A71756F7465}">
+               <param name="key_other_RAX_META_TYPE637573746F6D65723A71756F7465"
+                      style="template"
+                      type="meta:other_RAX_META_TYPE637573746F6D65723A71756F7465">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE637573746F6D65723A71756F7465</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A71756F7465"
+                       rax:roles="customer:quote">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE637573746F6D65723A71756F7465"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A71756F7465"
+                       rax:roles="customer:quote">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE637573746F6D65723A71756F7465"/>
+                  <response status="204"/>
+               </method>
+            </resource>
+            <resource id="key_other_RAX_META_TYPE637573746F6D65723A71756F746532"
+                      path="{key_other_RAX_META_TYPE637573746F6D65723A71756F746532}">
+               <param name="key_other_RAX_META_TYPE637573746F6D65723A71756F746532"
+                      style="template"
+                      type="meta:other_RAX_META_TYPE637573746F6D65723A71756F746532">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
+                     <para>A unique identifier for metadata item for other_RAX_META_TYPE637573746F6D65723A71756F746532</para>
+                  </wadl:doc>
+               </param>
+               <method name="PUT"
+                       id="setResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A71756F746532"
+                       rax:roles="customer:quote2">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Create or update resource metadata item for other_RAX_META_TYPE637573746F6D65723A71756F746532"/>
+                  <request>
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </request>
+                  <response status="200">
+                     <representation mediaType="application/json"/>
+                     <representation mediaType="application/xml" element="meta:meta"/>
+                  </response>
+               </method>
+               <method name="DELETE"
+                       id="deleteResourceMetadataItem_other_RAX_META_TYPE637573746F6D65723A71756F746532"
+                       rax:roles="customer:quote2">
+                  <wadl:doc xmlns="http://docbook.org/ns/docbook"
+                            xml:lang="EN"
+                            title="Delete resource metadata item for other_RAX_META_TYPE637573746F6D65723A71756F746532"/>
                   <response status="204"/>
                </method>
             </resource>
