@@ -64,27 +64,30 @@
         <xsl:variable name="metadata" as="node()*" select="wadl:application/rax:metadata"/>
         <xsl:variable name="resources" as="node()*" select="wadl:application/wadl:resources//wadl:resource[@rax:useMetadata]"/>
         <xsl:for-each select="$metadata">
-            <xsl:variable name="id" as="xs:string?" select="@id"/>
-            <xsl:if test="not($id)">
+            <xsl:variable name="mid" as="xs:string?" select="@id"/>
+            <xsl:if test="not($mid)">
                 <xsl:message terminate="yes">[ERROR] rax:useMetaData is missing an id</xsl:message>
             </xsl:if>
-            <xsl:if test="empty($resources[@rax:useMetadata= $id])">
-                <xsl:message>[WARNING] A resource that uses metadata '<xsl:value-of select="$id"/>' is not found.</xsl:message>
+            <xsl:if test="empty($resources[@rax:useMetadata= $mid])">
+                <xsl:message>[WARNING] A resource that uses metadata '<xsl:value-of select="$mid"/>' is not found.</xsl:message>
             </xsl:if>
             <xsl:if test="not(every $mr in ./rax:metaRole satisfies $mr/@name)">
-                <xsl:message terminate="yes">[ERROR] Every metaRole in '<xsl:value-of select="$id"/>' must contain a name</xsl:message>
+                <xsl:message terminate="yes">[ERROR] Every metaRole in '<xsl:value-of select="$mid"/>' must contain a name</xsl:message>
             </xsl:if>
             <xsl:if test="not(some $mr in ./rax:metaRole satisfies $mr/@pattern = '*')">
-                <xsl:message terminate="yes">[ERROR] There should be at least one metaRole in '<xsl:value-of select="$id"/>' that contains a pattern of '*'. This will be the admin role.</xsl:message>
+                <xsl:message terminate="yes">[ERROR] There should be at least one metaRole in '<xsl:value-of select="$mid"/>' that contains a pattern of '*'. This will be the admin role.</xsl:message>
             </xsl:if>
-            <xsl:if test="count($metadata[@id=$id]) &gt; 1">
-                <xsl:message terminate="yes">[ERROR] Multiple metadata with id '<xsl:value-of select="$id"/>' defined.</xsl:message>
+            <xsl:if test="not(every $mr in ./rax:metaRole satisfies if ($mr/@pattern) then $mr/@pattern = '*' or ends-with($mr/@pattern,':') else true())">
+                <xsl:message terminate="yes">[ERROR] Error in metadata '<xsl:value-of select="$mid"/>': every pattern must either be '*' or end with ':'.</xsl:message>
+            </xsl:if>
+            <xsl:if test="count($metadata[@id=$mid]) &gt; 1">
+                <xsl:message terminate="yes">[ERROR] Multiple metadata with id '<xsl:value-of select="$mid"/>' defined.</xsl:message>
             </xsl:if>
         </xsl:for-each>
         <xsl:for-each select="$resources">
-            <xsl:variable name="id" as="xs:string" select="@rax:useMetadata"/>
-            <xsl:if test="empty($metadata[@id=$id])">
-                <xsl:message terminate="yes">[ERROR] A rax:metadata item with an id of '<xsl:value-of select="$id"/>' is not defined.</xsl:message>
+            <xsl:variable name="mid" as="xs:string" select="@rax:useMetadata"/>
+            <xsl:if test="empty($metadata[@id=$mid])">
+                <xsl:message terminate="yes">[ERROR] A rax:metadata item with an id of '<xsl:value-of select="$mid"/>' is not defined.</xsl:message>
             </xsl:if>
         </xsl:for-each>
     </xsl:template>

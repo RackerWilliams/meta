@@ -33,7 +33,7 @@
         -->
         <rax:metaRole name="???" pattern="|||:"/>
         <!-- Here's another weird edge case patterns contain quotes -->
-        <rax:metaRole name="customer:quote" pattern="ap'o's"/>
-        <rax:metaRole name="customer:quote2" pattern='quo"t"e'/>
+        <rax:metaRole name="customer:quote" pattern="ap'o's:"/>
+        <rax:metaRole name="customer:quote2" pattern='quo"t"e:'/>
     </rax:metadata>
 </application>
