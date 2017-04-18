@@ -30,6 +30,8 @@
     version="2.0">
     
     <xsl:output indent="yes"/>
+
+    <xsl:variable name="metadata" select="/wadl:application/rax:metadata" as="node()*"/>
     <!--
         Error check first, bail if some of these assertions don't succeed.
     -->
@@ -61,7 +63,6 @@
         from creating an invalid WADL and allow us to catch errors upfront.
     -->
     <xsl:template name="checkMetadata">
-        <xsl:variable name="metadata" as="node()*" select="wadl:application/rax:metadata"/>
         <xsl:variable name="resources" as="node()*" select="wadl:application/wadl:resources//wadl:resource[@rax:useMetadata]"/>
         <xsl:for-each select="$metadata">
             <xsl:variable name="mid" as="xs:string?" select="@id"/>
@@ -101,9 +102,7 @@
             <xsl:apply-templates select="@*"/>
             <xsl:if test="not(wadl:grammars)">
                 <wadl:grammars>
-                    <xsl:call-template name="addMetadataSchema">
-                        <xsl:with-param name="metadata" select="rax:metadata"/>
-                    </xsl:call-template>
+                    <xsl:call-template name="addMetadataSchema"/>
                 </wadl:grammars>
             </xsl:if>
             <xsl:apply-templates select="node()"/>
@@ -112,9 +111,7 @@
     <xsl:template match="wadl:grammars">
         <xsl:copy>
             <xsl:apply-templates select="@* | node()"/>
-            <xsl:call-template name="addMetadataSchema">
-                <xsl:with-param name="metadata" select="../rax:metadata"/>
-            </xsl:call-template>
+            <xsl:call-template name="addMetadataSchema"/>
         </xsl:copy>
     </xsl:template>
     <xsl:template match="wadl:resource[@rax:useMetadata]">
@@ -127,29 +124,32 @@
         </xsl:copy>
     </xsl:template>
     <xsl:template match="rax:metadata"/>
-    <xsl:template match="rax:metadata" mode="pattern">
-        <xsl:variable name="metaRoles" as="node()*">
-            <xsl:apply-templates select="rax:metaRole[not(@pattern) or @pattern !='*']" mode="metaCopy"/>
-        </xsl:variable>
-        <xsl:variable name="id" select="@id" as="xs:string"/>
-
-        <xsl:for-each-group select="$metaRoles" group-by="@pattern">
-            <xsl:variable name="name" as="xs:string" select="current-group()[1]/@name"/>
-            <xs:simpleType name="{rax:metaResourceXSDType($id,rax:encodeRole($name))}">
-                <xs:restriction base="xs:string">
-                    <xs:pattern value="{rax:toRegExEscaped(current-group()[1]/@pattern)}.*"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xsl:for-each-group>
-    </xsl:template>
     <xsl:template name="addMetadataSchema">
-        <xsl:param name="metadata" as="node()*"/>
         <schema
             elementFormDefault="qualified"
             attributeFormDefault="unqualified"
             xmlns="http://www.w3.org/2001/XMLSchema"
             targetNamespace="http://docs.rackspace.com/metadata/api">
-            <xsl:apply-templates mode="pattern" select="$metadata"/>
+            <xsl:for-each-group select="$metadata//rax:metaRole[@pattern != '*']" group-by="@pattern">
+                <xsl:variable name="patternId" as="xs:string" select="generate-id(current-group()[1])"/>
+                <xsl:variable name="patternUnEsc" as="xs:string" select="current-group()[1]/@pattern"/>
+                <xsl:comment>Type for pattern <xsl:value-of select="$patternUnEsc"/></xsl:comment>
+                <xs:simpleType name="{$patternId}">
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="{rax:toRegExEscaped($patternUnEsc)}.*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xsl:for-each-group>
+            <xsl:for-each-group select="$metadata//rax:metaRole[not(@pattern)]" group-by="@name">
+                <xsl:variable name="patternId" as="xs:string" select="generate-id(current-group()[1])"/>
+                <xsl:variable name="patternUnEsc" as="xs:string" select="concat(current-group()[1]/@name,':')"/>
+                <xsl:comment>Type for pattern <xsl:value-of select="$patternUnEsc"/></xsl:comment>
+                <xs:simpleType name="{$patternId}">
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value="{rax:toRegExEscaped($patternUnEsc)}.*"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xsl:for-each-group>
         </schema>
     </xsl:template>
     <!-- Inserts Metadata API with specifics for a particular Metadata group -->
@@ -158,10 +158,8 @@
         <xsl:variable name="uniqueName" as="xs:string" select="rax:metaResourceTypeName($useMetadata)"/>
         <xsl:variable name="metadata" as="node()" select="/wadl:application/rax:metadata[@id=$useMetadata]"/>
         <xsl:variable name="adminTypes" as="node()*" select="$metadata/rax:metaRole[@pattern='*']"/>
-        <xsl:variable name="nonAdmins" as="node()*">
-            <xsl:apply-templates select="$metadata/rax:metaRole[not(@pattern) or @pattern !='*']" mode="metaCopy"/>
-        </xsl:variable>
-        <xsl:variable name="adminRaxRoles" as="xs:string"><xsl:value-of select="$adminTypes/@name" separator=" "/></xsl:variable>
+        <xsl:variable name="nonAdmins" as="node()*" select="$metadata/rax:metaRole[not(@pattern) or @pattern !='*']"/>
+        <xsl:variable name="adminRaxRoles" as="xs:string"><xsl:value-of select="distinct-values($adminTypes/@name)" separator=" "/></xsl:variable>
         <resource id="{$uniqueName}" path="metadata">
             <method name="GET" id="getResourceMetadata_{$uniqueName}">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
@@ -212,12 +210,20 @@
                 <xsl:with-param name="roles" select="$adminRaxRoles"/>
                 <xsl:with-param name="uniqueName" select="$uniqueName"/>
             </xsl:call-template>
-            <xsl:for-each-group select="$nonAdmins" group-by="@pattern">
+            <xsl:for-each-group select="$nonAdmins[@pattern]" group-by="@pattern">
                 <xsl:variable name="nonAdminRoles" as="xs:string*" select="current-group()/@name"/>
                 <xsl:call-template name="metaKey">
                     <xsl:with-param name="isAdmin" select="false()"/>
                     <xsl:with-param name="roles" select="$nonAdminRoles"/>
-                    <xsl:with-param name="uniqueName" select="rax:metaResourceXSDType($useMetadata,rax:encodeRole(@name))"/>
+                    <xsl:with-param name="uniqueName" select="rax:metaResourceXSDType((current-group()/@pattern)[1])"/>
+                </xsl:call-template>
+            </xsl:for-each-group>
+            <xsl:for-each-group select="$nonAdmins[not(@pattern)]" group-by="@name">
+                <xsl:variable name="nonAdminRoles" as="xs:string*" select="current-group()/@name"/>
+                <xsl:call-template name="metaKey">
+                    <xsl:with-param name="isAdmin" select="false()"/>
+                    <xsl:with-param name="roles" select="$nonAdminRoles"/>
+                    <xsl:with-param name="uniqueName" select="rax:metaResourceXSDTypeFromName((current-group()/@name)[1])"/>
                 </xsl:call-template>
             </xsl:for-each-group>
         </resource>
@@ -227,9 +233,10 @@
         <xsl:param name="roles" as="xs:string*"/>
         <xsl:param name="uniqueName" as="xs:string"/>
         <xsl:variable name="raxRoles" as="xs:string"><xsl:value-of select="$roles" separator=" "/></xsl:variable>
-        <resource id="key_{$uniqueName}">
-            <xsl:attribute name="path">{key_<xsl:value-of select="$uniqueName"/>}</xsl:attribute>
-            <param name="key_{$uniqueName}" style="template">
+        <xsl:variable name="uniqueId" as="xs:string" select="concat($uniqueName,'_',generate-id())"/>
+        <resource id="key_{$uniqueId}">
+            <xsl:attribute name="path">{key_<xsl:value-of select="$uniqueId"/>}</xsl:attribute>
+            <param name="key_{$uniqueId}" style="template">
                 <xsl:attribute name="type">
                     <xsl:choose>
                         <xsl:when test="$isAdmin">xs:string</xsl:when>
@@ -237,22 +244,22 @@
                     </xsl:choose>
                 </xsl:attribute>
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN">
-                    <para>A unique identifier for metadata item for <xsl:value-of select="$uniqueName"/></para>
+                    <para>A unique identifier for metadata item for <xsl:value-of select="$uniqueId"/></para>
                 </wadl:doc>
             </param>
             <xsl:if test="$isAdmin">
-                <method name="GET" id="getResourceMetadataItem_{$uniqueName}">
+                <method name="GET" id="getResourceMetadataItem_{$uniqueId}">
                     <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-                        title="Show resource metadata item details for {$uniqueName}"/>
+                        title="Show resource metadata item details for {$uniqueId}"/>
                     <response status="200 203">
                         <representation mediaType="application/json"/>
                         <representation mediaType="application/xml" element="meta:meta"/>
                     </response>
                 </method>
             </xsl:if>
-            <method name="PUT" id="setResourceMetadataItem_{$uniqueName}" rax:roles="{$raxRoles}">
+            <method name="PUT" id="setResourceMetadataItem_{$uniqueId}" rax:roles="{$raxRoles}">
                 <wadl:doc xml:lang="EN" xmlns="http://docbook.org/ns/docbook"
-                    title="Create or update resource metadata item for {$uniqueName}"/>
+                    title="Create or update resource metadata item for {$uniqueId}"/>
                 <request>
                     <representation mediaType="application/json"/>
                     <representation mediaType="application/xml" element="meta:meta"/>
@@ -262,9 +269,9 @@
                     <representation mediaType="application/xml" element="meta:meta"/>
                 </response>
             </method>
-            <method name="DELETE" id="deleteResourceMetadataItem_{$uniqueName}" rax:roles="{$raxRoles}">
+            <method name="DELETE" id="deleteResourceMetadataItem_{$uniqueId}" rax:roles="{$raxRoles}">
                 <wadl:doc xmlns="http://docbook.org/ns/docbook" xml:lang="EN"
-                    title="Delete resource metadata item for {$uniqueName}"/>
+                    title="Delete resource metadata item for {$uniqueId}"/>
                 <response status="204"/>
             </method>
         </resource>
@@ -277,7 +284,7 @@
             <xsl:variable name="test" as="xs:string*">
                 let $roleToPattern := map {
                 <xsl:for-each select="$nonAdmins">
-                    <xsl:value-of select="rax:quote(@name)"/> : <xsl:value-of select="rax:quote(@pattern)"/>
+                    <xsl:value-of select="rax:quote(@name)"/> : <xsl:value-of select="if (not(@pattern)) then rax:quote(concat(@name,':')) else rax:quote(@pattern)"/>
                     <xsl:if test="position() != last()">,</xsl:if>
                 </xsl:for-each>
                 },
@@ -294,22 +301,17 @@
                             </xsl:comment>
         </rax:assert>
     </xsl:template>
-    <xsl:template match="rax:metaRole" mode="metaCopy">
-        <xsl:copy>
-            <xsl:if test="not(@pattern)">
-                <xsl:attribute name="pattern" select="concat(@name,':')"/>
-            </xsl:if>
-            <xsl:apply-templates mode="copy" select="@* | node()"/>
-        </xsl:copy>
-    </xsl:template>
     <xsl:function name="rax:metaResourceTypeName" as="xs:string">
         <xsl:param name="metaDataName" as="xs:string"/>
         <xsl:value-of select="concat($metaDataName,'_RAX_META_TYPE')"/>
     </xsl:function>
     <xsl:function name="rax:metaResourceXSDType" as="xs:string">
-        <xsl:param name="metaDataName" as="xs:string"/>
-        <xsl:param name="roleName" as="xs:string"/>
-        <xsl:value-of select="concat(rax:metaResourceTypeName($metaDataName),replace($roleName,':','_'))"/>
+        <xsl:param name="pattern" as="xs:string"/>
+        <xsl:value-of select="generate-id(($metadata//rax:metaRole[@pattern = $pattern])[1])"/>
+    </xsl:function>
+    <xsl:function name="rax:metaResourceXSDTypeFromName" as="xs:string">
+        <xsl:param name="name" as="xs:string"/>
+        <xsl:value-of select="generate-id(($metadata//rax:metaRole[not(@pattern) and @name=$name])[1])"/>
     </xsl:function>
     <xsl:function name="rax:toRegExEscaped" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
@@ -320,21 +322,5 @@
         <xsl:variable name="q" as="xs:string">'</xsl:variable>
         <xsl:variable name="noquotes" as="xs:string" select='replace($in,$q,concat($q,$q))'/>
         <xsl:value-of select="concat($q,$noquotes,$q)"/>
-    </xsl:function>
-    <xsl:function name="rax:encodeRole" as="xs:string">
-        <xsl:param name="in" as="xs:string"/>
-        <xsl:value-of select="string-join(for $i in string-to-codepoints($in) return rax:int-to-hex($i),'')"/>
-    </xsl:function>
-    <xsl:function name="rax:int-to-hex" as="xs:string">
-        <xsl:param name="in" as="xs:integer"/>
-        <xsl:sequence
-            select="if ($in eq 0)
-            then '0'
-            else
-            concat(if ($in gt 16)
-            then rax:int-to-hex($in idiv 16)
-            else '',
-            substring('0123456789ABCDEF',
-            ($in mod 16) + 1, 1))"/>
     </xsl:function>
 </xsl:stylesheet>
