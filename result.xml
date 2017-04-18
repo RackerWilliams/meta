@@ -87,9 +87,11 @@
                                  test="not(empty(map:keys($_?metadata)))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'billing:role' : 'billing:','service:role' : 'service:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'billing:role' : ('billing:') ,'service:role' : ('service:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'billing:role'  :  'billing:' , 'service:role'  :  'service:' 
+                 'billing:role'  : ( 'billing:' )
+                     , 'service:role'  : ( 'service:' )
+                     
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  map:keys($_?metadata)  return string($k),
@@ -105,9 +107,11 @@
                                  test="not(empty(/meta:metadata/meta:meta/@key))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'billing:role' : 'billing:','service:role' : 'service:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'billing:role' : ('billing:') ,'service:role' : ('service:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'billing:role'  :  'billing:' , 'service:role'  :  'service:' 
+                 'billing:role'  : ( 'billing:' )
+                     , 'service:role'  : ( 'service:' )
+                     
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  /meta:metadata/meta:meta/@key  return string($k),
@@ -274,9 +278,14 @@
                                  test="not(empty(map:keys($_?metadata)))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:','customer:quote' : 'ap''o''s:','customer:quote' : 'quo&#34;t&#34;e:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'customer:role' : ('customer:role:') ,'service:role' : ('service:') ,'another_role' : ('service:') ,'???' : ('|||:') ,'customer:quote' : ('ap''o''s:','quo&#34;t&#34;e:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' , 'customer:quote'  :  'ap''o''s:' , 'customer:quote'  :  'quo"t"e:' 
+                 'customer:role'  : ( 'customer:role:' )
+                     , 'service:role'  : ( 'service:' )
+                     , 'another_role'  : ( 'service:' )
+                     , '???'  : ( '|||:' )
+                     , 'customer:quote'  : ( 'ap''o''s:','quo"t"e:' )
+                     
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  map:keys($_?metadata)  return string($k),
@@ -292,9 +301,14 @@
                                  test="not(empty(/meta:metadata/meta:meta/@key))"/>
                      <rax:assert message="You are not allowed to set metadata items of this type"
                                  code="403"
-                                 test="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:','customer:quote' : 'ap''o''s:','customer:quote' : 'quo&#34;t&#34;e:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
+                                 test="let $roleToPattern := map { 'customer:role' : ('customer:role:') ,'service:role' : ('service:') ,'another_role' : ('service:') ,'???' : ('|||:') ,'customer:quote' : ('ap''o''s:','quo&#34;t&#34;e:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)"><!--
                 let $roleToPattern := map {
-                 'customer:role'  :  'customer:role:' , 'service:role'  :  'service:' , 'another_role'  :  'service:' , '???'  :  '|||:' , 'customer:quote'  :  'ap''o''s:' , 'customer:quote'  :  'quo"t"e:' 
+                 'customer:role'  : ( 'customer:role:' )
+                     , 'service:role'  : ( 'service:' )
+                     , 'another_role'  : ( 'service:' )
+                     , '???'  : ( '|||:' )
+                     , 'customer:quote'  : ( 'ap''o''s:','quo"t"e:' )
+                     
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in  /meta:metadata/meta:meta/@key  return string($k),

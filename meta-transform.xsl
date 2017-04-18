@@ -283,10 +283,12 @@
         <rax:assert message="You are not allowed to set metadata items of this type" code="403">
             <xsl:variable name="test" as="xs:string*">
                 let $roleToPattern := map {
-                <xsl:for-each select="$nonAdmins">
-                    <xsl:value-of select="rax:quote(@name)"/> : <xsl:value-of select="if (not(@pattern)) then rax:quote(concat(@name,':')) else rax:quote(@pattern)"/>
+                <xsl:for-each-group select="$nonAdmins" group-by="@name">
+                    <xsl:value-of select="rax:quote(@name)"/> : (<xsl:value-of select="for $c in current-group() return
+                            if (not($c/@pattern)) then rax:quote(concat($c/@name,':')) else rax:quote($c/@pattern)"
+                        separator=","/>)
                     <xsl:if test="position() != last()">,</xsl:if>
-                </xsl:for-each>
+                </xsl:for-each-group>
                 },
                 $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)),
                 $metaItems  := for $k in <xsl:value-of select="$keySelector"/> return string($k),
