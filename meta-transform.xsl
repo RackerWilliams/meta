@@ -142,7 +142,7 @@
             </xsl:for-each-group>
             <xsl:for-each-group select="$metadata//rax:metaRole[not(@pattern)]" group-by="@name">
                 <xsl:variable name="patternId" as="xs:string" select="generate-id(current-group()[1])"/>
-                <xsl:variable name="patternUnEsc" as="xs:string" select="concat(current-group()[1]/@name,':')"/>
+                <xsl:variable name="patternUnEsc" as="xs:string" select="rax:pattern(current-group()[1])"/>
                 <xsl:comment>Type for pattern <xsl:value-of select="$patternUnEsc"/></xsl:comment>
                 <xs:simpleType name="{$patternId}">
                     <xs:restriction base="xs:string">
@@ -285,7 +285,7 @@
                 let $roleToPattern := map {
                 <xsl:for-each-group select="$nonAdmins" group-by="@name">
                     <xsl:value-of select="rax:quote(@name)"/> : (<xsl:value-of select="for $c in current-group() return
-                            if (not($c/@pattern)) then rax:quote(concat($c/@name,':')) else rax:quote($c/@pattern)"
+                            rax:quote(rax:pattern($c))"
                         separator=","/>)
                     <xsl:if test="position() != last()">,</xsl:if>
                 </xsl:for-each-group>
@@ -318,6 +318,13 @@
     <xsl:function name="rax:toRegExEscaped" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
         <xsl:value-of select="replace($in,'\.|\\|\(|\)|\{|\}|\[|\]|\?|\+|\-|\^|\$|#|\*|\|','\\$0')"/>
+    </xsl:function>
+    <xsl:function name="rax:pattern" as="xs:string">
+        <xsl:param name="metaRole" as="element()"/>
+        <xsl:choose>
+            <xsl:when test="$metaRole/@pattern"><xsl:value-of select="$metaRole/@pattern"/></xsl:when>
+            <xsl:otherwise><xsl:value-of select="concat($metaRole/@name,':')"/></xsl:otherwise>
+        </xsl:choose>
     </xsl:function>
     <xsl:function name="rax:quote" as="xs:string">
         <xsl:param name="in" as="xs:string"/>
