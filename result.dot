@@ -7,194 +7,234 @@ digraph Checker { rankdir=LR; fontname="Helvetica"; labelloc=b;
            S0
            }
            {
-           S0->d43e50
-           S0->d43e217
-           d43e119->d43e121
-           d43e119->d43e123
-           d43e153->d43e155
-           d43e153->d43e157
-           d43e197->d43e199
-           d43e197->d43e201
-           d43e62->d43e64
-           d43e62->d43e66
-           d43e84W->d43e86
-           d43e86->d43e88
-           d43e288->d43e290
-           d43e288->d43e292
-           d43e322->d43e324
-           d43e322->d43e326
-           d43e356->d43e359
-           d43e356->d43e361
-           d43e357->d43e359
-           d43e357->d43e361
-           d43e402->d43e405
-           d43e402->d43e407
-           d43e403->d43e405
-           d43e403->d43e407
-           d43e229->d43e232
-           d43e229->d43e234
-           d43e230->d43e232
-           d43e230->d43e234
-           d43e252W->d43e254
-           d43e254->d43e256
-           d43e50->d43e51
-           d43e51->d43e105
-           d43e51->d43e139
-           d43e51->d43e173
-           d43e51->d43e52
-           d43e51->PUT_d43e51
-           d43e51->d43e99
-           d43e57->d43e62
-           d43e76->d43e82
-           d43e76->d43e84
-           d43e84->d43e84W
-           d43e99->d43e102
-           d43e105->d43e114
-           d43e105->d43e133
-           d43e114->d43e119
-           d43e133->d43e136
-           d43e139->d43e148
-           d43e139->d43e167
-           d43e148->d43e153
-           d43e167->d43e170
-           d43e173->d43e182
-           d43e173->d43e192
-           d43e173->d43e211
-           d43e192->d43e197
-           d43e211->d43e214
-           PUT_d43e51->d43e57
-           PUT_d43e51->d43e76
-           d43e217->d43e218
-           d43e218->d43e274
-           d43e218->d43e308
-           d43e218->d43e342
-           d43e218->d43e378
-           d43e218->d43e219
-           d43e218->PUT_d43e218
-           d43e218->d43e267
-           d43e224->d43e229
-           d43e224->d43e230
-           d43e244->d43e250
-           d43e244->d43e252
-           d43e252->d43e252W
-           d43e267->d43e270
-           d43e267->d43e271
-           d43e274->d43e283
-           d43e274->d43e302
-           d43e283->d43e288
-           d43e302->d43e305
-           d43e308->d43e317
-           d43e308->d43e336
-           d43e317->d43e322
-           d43e336->d43e339
-           d43e342->d43e351
-           d43e342->d43e371
-           d43e351->d43e356
-           d43e351->d43e357
-           d43e371->d43e374
-           d43e371->d43e375
-           d43e378->d43e387
-           d43e378->d43e397
-           d43e378->d43e417
-           d43e397->d43e402
-           d43e397->d43e403
-           d43e417->d43e420
-           d43e417->d43e421
-           PUT_d43e218->d43e224
-           PUT_d43e218->d43e244
+           S0->d454e59
+           S0->d454e231
+           d454e133->d454e135
+           d454e133->d454e137
+           d454e167->d454e169
+           d454e167->d454e171
+           d454e211->d454e213
+           d454e211->d454e215
+           d454e71->d454e73
+           d454e71->d454e75
+           d454e91W->d454e93
+           d454e93->d454e95
+           d454e98W->d454e100
+           d454e100->d454e102
+           d454e307->d454e310
+           d454e307->d454e312
+           d454e308->d454e310
+           d454e308->d454e312
+           d454e343->d454e345
+           d454e343->d454e347
+           d454e377->d454e379
+           d454e377->d454e381
+           d454e411->d454e413
+           d454e411->d454e415
+           d454e445->d454e447
+           d454e445->d454e449
+           d454e489->d454e492
+           d454e489->d454e494
+           d454e490->d454e492
+           d454e490->d454e494
+           d454e243->d454e246
+           d454e243->d454e248
+           d454e244->d454e246
+           d454e244->d454e248
+           d454e264W->d454e266
+           d454e266->d454e268
+           d454e271W->d454e273
+           d454e273->d454e275
+           d454e59->d454e60
+           d454e60->d454e119
+           d454e60->d454e153
+           d454e60->d454e187
+           d454e60->d454e61
+           d454e60->PUT_d454e60
+           d454e60->d454e113
+           d454e66->d454e71
+           d454e85->d454e91
+           d454e85->d454e98
+           d454e91->d454e91W
+           d454e98->d454e98W
+           d454e113->d454e116
+           d454e119->d454e128
+           d454e119->d454e147
+           d454e128->d454e133
+           d454e147->d454e150
+           d454e153->d454e162
+           d454e153->d454e181
+           d454e162->d454e167
+           d454e181->d454e184
+           d454e187->d454e196
+           d454e187->d454e206
+           d454e187->d454e225
+           d454e206->d454e211
+           d454e225->d454e228
+           PUT_d454e60->d454e66
+           PUT_d454e60->d454e85
+           d454e231->d454e232
+           d454e232->d454e293
+           d454e232->d454e329
+           d454e232->d454e363
+           d454e232->d454e397
+           d454e232->d454e431
+           d454e232->d454e465
+           d454e232->d454e233
+           d454e232->PUT_d454e232
+           d454e232->d454e286
+           d454e238->d454e243
+           d454e238->d454e244
+           d454e258->d454e264
+           d454e258->d454e271
+           d454e264->d454e264W
+           d454e271->d454e271W
+           d454e286->d454e289
+           d454e286->d454e290
+           d454e293->d454e302
+           d454e293->d454e322
+           d454e302->d454e307
+           d454e302->d454e308
+           d454e322->d454e325
+           d454e322->d454e326
+           d454e329->d454e338
+           d454e329->d454e357
+           d454e338->d454e343
+           d454e357->d454e360
+           d454e363->d454e372
+           d454e363->d454e391
+           d454e372->d454e377
+           d454e391->d454e394
+           d454e397->d454e406
+           d454e397->d454e425
+           d454e406->d454e411
+           d454e425->d454e428
+           d454e431->d454e440
+           d454e431->d454e459
+           d454e440->d454e445
+           d454e459->d454e462
+           d454e465->d454e474
+           d454e465->d454e484
+           d454e465->d454e504
+           d454e484->d454e489
+           d454e484->d454e490
+           d454e504->d454e507
+           d454e504->d454e508
+           PUT_d454e232->d454e238
+           PUT_d454e232->d454e258
            }
 
 //Nodes
 
        REAL_START[style=invis]
 S0[label="START\nS0", shape=none, fillcolor="white"]
-d43e119[label="X-ROLES : billing:role\n[41005]\nd43e119"]
-d43e136[label="X-ROLES : billing:role\n[41005]\nd43e136"]
-d43e153[label="X-ROLES : service:role\n[41005]\nd43e153"]
-d43e170[label="X-ROLES : service:role\n[41005]\nd43e170"]
-d43e197[label="X-ROLES : admin\n[41005]\nd43e197"]
-d43e214[label="X-ROLES : admin\n[41005]\nd43e214"]
-d43e62[label="X-ROLES : admin\n[41005]\nd43e62"]
-d43e84W[label="WELL_XML\n[50006]\nd43e84W"]
-d43e86[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd43e86"]
-d43e88[label="let $roleToPattern := map { 'billing:role' : 'billing:','service:role' : 'service:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd43e88"]
-d43e102[label="X-ROLES : admin\n[41004]\nd43e102"]
-d43e288[label="X-ROLES : \\?\\?\\?\n[41005]\nd43e288"]
-d43e305[label="X-ROLES : \\?\\?\\?\n[41005]\nd43e305"]
-d43e322[label="X-ROLES : customer:role\n[41005]\nd43e322"]
-d43e339[label="X-ROLES : customer:role\n[41005]\nd43e339"]
-d43e356[label="X-ROLES : service:role\n[41005]\nd43e356"]
-d43e357[label="X-ROLES : another_role\n[41005]\nd43e357"]
-d43e374[label="X-ROLES : service:role\n[41005]\nd43e374"]
-d43e375[label="X-ROLES : another_role\n[41005]\nd43e375"]
-d43e402[label="X-ROLES : admin\n[41005]\nd43e402"]
-d43e403[label="X-ROLES : superAdmin\n[41005]\nd43e403"]
-d43e420[label="X-ROLES : admin\n[41005]\nd43e420"]
-d43e421[label="X-ROLES : superAdmin\n[41005]\nd43e421"]
-d43e229[label="X-ROLES : admin\n[41005]\nd43e229"]
-d43e230[label="X-ROLES : superAdmin\n[41005]\nd43e230"]
-d43e252W[label="WELL_XML\n[50006]\nd43e252W"]
-d43e254[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd43e254"]
-d43e256[label="let $roleToPattern := map { 'customer:role' : 'customer:role:','service:role' : 'service:','another_role' : 'service:','???' : '|||:' }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd43e256"]
-d43e270[label="X-ROLES : admin\n[41004]\nd43e270"]
-d43e271[label="X-ROLES : superAdmin\n[41004]\nd43e271"]
-d43e50[label="myResource\nd43e50", fillcolor="yellowgreen"]
-d43e51[label="metadata\nd43e51", fillcolor="yellowgreen"]
-d43e52[label="GET \n(Show resource metadata for standard_RAX_META_TYPE)\nd43e52"]
-d43e57[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd43e57"]
-d43e64[label="(?i)(application/json)(;.*)?\nd43e64"]
-d43e66[label="(?i)(application/xml)(;.*)?\nd43e66"]
-d43e76[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd43e76"]
-d43e82[label="(?i)(application/json)(;.*)?\nd43e82"]
-d43e84[label="(?i)(application/xml)(;.*)?\nd43e84"]
-d43e99[label="DELETE \n(Delete resource metadata for standard_RAX_META_TYPE)\nd43e99"]
-d43e105[label="meta:standard_RAX_META_TYPE62696C6C696E673A726F6C65 \n(key_standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e105", fillcolor="yellowgreen"]
-d43e114[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e114"]
-d43e121[label="(?i)(application/json)(;.*)?\nd43e121"]
-d43e123[label="(?i)(application/xml)(;.*)?\nd43e123"]
-d43e133[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE62696C6C696E673A726F6C65)\nd43e133"]
-d43e139[label="meta:standard_RAX_META_TYPE736572766963653A726F6C65 \n(key_standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e139", fillcolor="yellowgreen"]
-d43e148[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e148"]
-d43e155[label="(?i)(application/json)(;.*)?\nd43e155"]
-d43e157[label="(?i)(application/xml)(;.*)?\nd43e157"]
-d43e167[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE736572766963653A726F6C65)\nd43e167"]
-d43e173[label="(?s).* \n(key_standard_RAX_META_TYPE)\nd43e173", fillcolor="yellowgreen"]
-d43e182[label="GET \n(Show resource metadata item details for standard_RAX_META_TYPE)\nd43e182"]
-d43e192[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE)\nd43e192"]
-d43e199[label="(?i)(application/json)(;.*)?\nd43e199"]
-d43e201[label="(?i)(application/xml)(;.*)?\nd43e201"]
-d43e211[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE)\nd43e211"]
-PUT_d43e51[label="PUT \n(ε)\nPUT_d43e51"]
-d43e217[label="otherResource\nd43e217", fillcolor="yellowgreen"]
-d43e218[label="metadata\nd43e218", fillcolor="yellowgreen"]
-d43e219[label="GET \n(Show resource metadata for other_RAX_META_TYPE)\nd43e219"]
-d43e224[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd43e224"]
-d43e232[label="(?i)(application/json)(;.*)?\nd43e232"]
-d43e234[label="(?i)(application/xml)(;.*)?\nd43e234"]
-d43e244[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd43e244"]
-d43e250[label="(?i)(application/json)(;.*)?\nd43e250"]
-d43e252[label="(?i)(application/xml)(;.*)?\nd43e252"]
-d43e267[label="DELETE \n(Delete resource metadata for other_RAX_META_TYPE)\nd43e267"]
-d43e274[label="meta:other_RAX_META_TYPE3F3F3F \n(key_other_RAX_META_TYPE3F3F3F)\nd43e274", fillcolor="yellowgreen"]
-d43e283[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE3F3F3F)\nd43e283"]
-d43e290[label="(?i)(application/json)(;.*)?\nd43e290"]
-d43e292[label="(?i)(application/xml)(;.*)?\nd43e292"]
-d43e302[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE3F3F3F)\nd43e302"]
-d43e308[label="meta:other_RAX_META_TYPE637573746F6D65723A726F6C65 \n(key_other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e308", fillcolor="yellowgreen"]
-d43e317[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e317"]
-d43e324[label="(?i)(application/json)(;.*)?\nd43e324"]
-d43e326[label="(?i)(application/xml)(;.*)?\nd43e326"]
-d43e336[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE637573746F6D65723A726F6C65)\nd43e336"]
-d43e342[label="meta:other_RAX_META_TYPE736572766963653A726F6C65 \n(key_other_RAX_META_TYPE736572766963653A726F6C65)\nd43e342", fillcolor="yellowgreen"]
-d43e351[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65)\nd43e351"]
-d43e359[label="(?i)(application/json)(;.*)?\nd43e359"]
-d43e361[label="(?i)(application/xml)(;.*)?\nd43e361"]
-d43e371[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE736572766963653A726F6C65)\nd43e371"]
-d43e378[label="(?s).* \n(key_other_RAX_META_TYPE)\nd43e378", fillcolor="yellowgreen"]
-d43e387[label="GET \n(Show resource metadata item details for other_RAX_META_TYPE)\nd43e387"]
-d43e397[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE)\nd43e397"]
-d43e405[label="(?i)(application/json)(;.*)?\nd43e405"]
-d43e407[label="(?i)(application/xml)(;.*)?\nd43e407"]
-d43e417[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE)\nd43e417"]
-PUT_d43e218[label="PUT \n(ε)\nPUT_d43e218"]
+d454e133[label="X-ROLES : billing:role\n[41005]\nd454e133"]
+d454e150[label="X-ROLES : billing:role\n[41005]\nd454e150"]
+d454e167[label="X-ROLES : service:role\n[41005]\nd454e167"]
+d454e184[label="X-ROLES : service:role\n[41005]\nd454e184"]
+d454e211[label="X-ROLES : admin\n[41005]\nd454e211"]
+d454e228[label="X-ROLES : admin\n[41005]\nd454e228"]
+d454e71[label="X-ROLES : admin\n[41005]\nd454e71"]
+d454e91W[label="WELL_JSON\n[50006]\nd454e91W"]
+d454e93[label="not(empty(map:keys($_?metadata)))\n[50007]\nd454e93"]
+d454e95[label="let $roleToPattern := map { 'billing:role' : ('billing:') ,'service:role' : ('service:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd454e95"]
+d454e98W[label="WELL_XML\n[50006]\nd454e98W"]
+d454e100[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd454e100"]
+d454e102[label="let $roleToPattern := map { 'billing:role' : ('billing:') ,'service:role' : ('service:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd454e102"]
+d454e116[label="X-ROLES : admin\n[41004]\nd454e116"]
+d454e307[label="X-ROLES : service:role\n[41005]\nd454e307"]
+d454e308[label="X-ROLES : another_role\n[41005]\nd454e308"]
+d454e325[label="X-ROLES : service:role\n[41005]\nd454e325"]
+d454e326[label="X-ROLES : another_role\n[41005]\nd454e326"]
+d454e343[label="X-ROLES : customer:role\n[41005]\nd454e343"]
+d454e360[label="X-ROLES : customer:role\n[41005]\nd454e360"]
+d454e377[label="X-ROLES : \\?\\?\\?\n[41005]\nd454e377"]
+d454e394[label="X-ROLES : \\?\\?\\?\n[41005]\nd454e394"]
+d454e411[label="X-ROLES : customer:quote\n[41005]\nd454e411"]
+d454e428[label="X-ROLES : customer:quote\n[41005]\nd454e428"]
+d454e445[label="X-ROLES : customer:quote\n[41005]\nd454e445"]
+d454e462[label="X-ROLES : customer:quote\n[41005]\nd454e462"]
+d454e489[label="X-ROLES : admin\n[41005]\nd454e489"]
+d454e490[label="X-ROLES : superAdmin\n[41005]\nd454e490"]
+d454e507[label="X-ROLES : admin\n[41005]\nd454e507"]
+d454e508[label="X-ROLES : superAdmin\n[41005]\nd454e508"]
+d454e243[label="X-ROLES : admin\n[41005]\nd454e243"]
+d454e244[label="X-ROLES : superAdmin\n[41005]\nd454e244"]
+d454e264W[label="WELL_JSON\n[50006]\nd454e264W"]
+d454e266[label="not(empty(map:keys($_?metadata)))\n[50007]\nd454e266"]
+d454e268[label="let $roleToPattern := map { 'customer:role' : ('customer:role:') ,'service:role' : ('service:') ,'another_role' : ('service:') ,'???' : ('|||:') ,'customer:quote' : ('ap''o''s:','quo\"t\"e:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in map:keys($_?metadata) return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd454e268"]
+d454e271W[label="WELL_XML\n[50006]\nd454e271W"]
+d454e273[label="not(empty(/meta:metadata/meta:meta/@key))\n[50007]\nd454e273"]
+d454e275[label="let $roleToPattern := map { 'customer:role' : ('customer:role:') ,'service:role' : ('service:') ,'another_role' : ('service:') ,'???' : ('|||:') ,'customer:quote' : ('ap''o''s:','quo\"t\"e:') }, $allowedPatterns := distinct-values(for $role in req:headers('x-roles', true()) return $roleToPattern($role)), $metaItems := for $k in /meta:metadata/meta:meta/@key return string($k), $matchItems := distinct-values(for $meta in $metaItems return for $pattern in $allowedPatterns return if (starts-with($meta, $pattern)) then $meta else ()) return count($matchItems) = count($metaItems)\n[50008]\nd454e275"]
+d454e289[label="X-ROLES : admin\n[41004]\nd454e289"]
+d454e290[label="X-ROLES : superAdmin\n[41004]\nd454e290"]
+d454e59[label="myResource\nd454e59", fillcolor="yellowgreen"]
+d454e60[label="metadata\nd454e60", fillcolor="yellowgreen"]
+d454e61[label="GET \n(Show resource metadata for standard_RAX_META_TYPE)\nd454e61"]
+d454e66[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd454e66"]
+d454e73[label="(?i)(application/json)(;.*)?\nd454e73"]
+d454e75[label="(?i)(application/xml)(;.*)?\nd454e75"]
+d454e85[label="PUT \n(Create or update resource metadata for standard_RAX_META_TYPE)\nd454e85"]
+d454e91[label="(?i)(application/json)(;.*)?\nd454e91"]
+d454e98[label="(?i)(application/xml)(;.*)?\nd454e98"]
+d454e113[label="DELETE \n(Delete resource metadata for standard_RAX_META_TYPE)\nd454e113"]
+d454e119[label="meta:d1e16 \n(key_d1e16_d1e16)\nd454e119", fillcolor="yellowgreen"]
+d454e128[label="PUT \n(Create or update resource metadata item for d1e16_d1e16)\nd454e128"]
+d454e135[label="(?i)(application/json)(;.*)?\nd454e135"]
+d454e137[label="(?i)(application/xml)(;.*)?\nd454e137"]
+d454e147[label="DELETE \n(Delete resource metadata item for d1e16_d1e16)\nd454e147"]
+d454e153[label="meta:d1e18 \n(key_d1e18_d1e18)\nd454e153", fillcolor="yellowgreen"]
+d454e162[label="PUT \n(Create or update resource metadata item for d1e18_d1e18)\nd454e162"]
+d454e169[label="(?i)(application/json)(;.*)?\nd454e169"]
+d454e171[label="(?i)(application/xml)(;.*)?\nd454e171"]
+d454e181[label="DELETE \n(Delete resource metadata item for d1e18_d1e18)\nd454e181"]
+d454e187[label="(?s).* \n(key_standard_RAX_META_TYPE_d1e5)\nd454e187", fillcolor="yellowgreen"]
+d454e196[label="GET \n(Show resource metadata item details for standard_RAX_META_TYPE_d1e5)\nd454e196"]
+d454e206[label="PUT \n(Create or update resource metadata item for standard_RAX_META_TYPE_d1e5)\nd454e206"]
+d454e213[label="(?i)(application/json)(;.*)?\nd454e213"]
+d454e215[label="(?i)(application/xml)(;.*)?\nd454e215"]
+d454e225[label="DELETE \n(Delete resource metadata item for standard_RAX_META_TYPE_d1e5)\nd454e225"]
+PUT_d454e60[label="PUT \n(ε)\nPUT_d454e60"]
+d454e231[label="otherResource\nd454e231", fillcolor="yellowgreen"]
+d454e232[label="metadata\nd454e232", fillcolor="yellowgreen"]
+d454e233[label="GET \n(Show resource metadata for other_RAX_META_TYPE)\nd454e233"]
+d454e238[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd454e238"]
+d454e246[label="(?i)(application/json)(;.*)?\nd454e246"]
+d454e248[label="(?i)(application/xml)(;.*)?\nd454e248"]
+d454e258[label="PUT \n(Create or update resource metadata for other_RAX_META_TYPE)\nd454e258"]
+d454e264[label="(?i)(application/json)(;.*)?\nd454e264"]
+d454e271[label="(?i)(application/xml)(;.*)?\nd454e271"]
+d454e286[label="DELETE \n(Delete resource metadata for other_RAX_META_TYPE)\nd454e286"]
+d454e293[label="meta:d1e18 \n(key_d1e18_d1e36)\nd454e293", fillcolor="yellowgreen"]
+d454e302[label="PUT \n(Create or update resource metadata item for d1e18_d1e36)\nd454e302"]
+d454e310[label="(?i)(application/json)(;.*)?\nd454e310"]
+d454e312[label="(?i)(application/xml)(;.*)?\nd454e312"]
+d454e322[label="DELETE \n(Delete resource metadata item for d1e18_d1e36)\nd454e322"]
+d454e329[label="meta:d1e31 \n(key_d1e31_d1e31)\nd454e329", fillcolor="yellowgreen"]
+d454e338[label="PUT \n(Create or update resource metadata item for d1e31_d1e31)\nd454e338"]
+d454e345[label="(?i)(application/json)(;.*)?\nd454e345"]
+d454e347[label="(?i)(application/xml)(;.*)?\nd454e347"]
+d454e357[label="DELETE \n(Delete resource metadata item for d1e31_d1e31)\nd454e357"]
+d454e363[label="meta:d1e42 \n(key_d1e42_d1e42)\nd454e363", fillcolor="yellowgreen"]
+d454e372[label="PUT \n(Create or update resource metadata item for d1e42_d1e42)\nd454e372"]
+d454e379[label="(?i)(application/json)(;.*)?\nd454e379"]
+d454e381[label="(?i)(application/xml)(;.*)?\nd454e381"]
+d454e391[label="DELETE \n(Delete resource metadata item for d1e42_d1e42)\nd454e391"]
+d454e397[label="meta:d1e46 \n(key_d1e46_d1e46)\nd454e397", fillcolor="yellowgreen"]
+d454e406[label="PUT \n(Create or update resource metadata item for d1e46_d1e46)\nd454e406"]
+d454e413[label="(?i)(application/json)(;.*)?\nd454e413"]
+d454e415[label="(?i)(application/xml)(;.*)?\nd454e415"]
+d454e425[label="DELETE \n(Delete resource metadata item for d1e46_d1e46)\nd454e425"]
+d454e431[label="meta:d1e49 \n(key_d1e49_d1e49)\nd454e431", fillcolor="yellowgreen"]
+d454e440[label="PUT \n(Create or update resource metadata item for d1e49_d1e49)\nd454e440"]
+d454e447[label="(?i)(application/json)(;.*)?\nd454e447"]
+d454e449[label="(?i)(application/xml)(;.*)?\nd454e449"]
+d454e459[label="DELETE \n(Delete resource metadata item for d1e49_d1e49)\nd454e459"]
+d454e465[label="(?s).* \n(key_other_RAX_META_TYPE_d1e7)\nd454e465", fillcolor="yellowgreen"]
+d454e474[label="GET \n(Show resource metadata item details for other_RAX_META_TYPE_d1e7)\nd454e474"]
+d454e484[label="PUT \n(Create or update resource metadata item for other_RAX_META_TYPE_d1e7)\nd454e484"]
+d454e492[label="(?i)(application/json)(;.*)?\nd454e492"]
+d454e494[label="(?i)(application/xml)(;.*)?\nd454e494"]
+d454e504[label="DELETE \n(Delete resource metadata item for other_RAX_META_TYPE_d1e7)\nd454e504"]
+PUT_d454e232[label="PUT \n(ε)\nPUT_d454e232"]
 }
